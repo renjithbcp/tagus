@@ -16,7 +16,7 @@
 }
 
 .product-details {
-    max-width: 800px;
+    max-width:1200px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
@@ -27,6 +27,7 @@
     max-width: 400px;
     margin-right: 20px;
     height: 100%;
+    align-self: center;
   }
 
   .product-details .product-info table {

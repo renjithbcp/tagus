@@ -4,8 +4,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './productDetailsPage.css';
-import productsData from './Product.js';
-import EnquireModal from './EnquireModel.js'; // Import the EnquireModal component
+import EnquireModal from './EnquireModel'; // Import the EnquireModal component
+import productsData from './Product';
 
 const Breadcrumb = ({ paths }) => (
   <nav aria-label="breadcrumb">
@@ -88,6 +88,23 @@ const ProductDetailsPage = () => {
               <tr>
                 <td>Date:</td>
                 <td>{product.date}</td>
+              </tr>
+              <tr>
+                <td>Description:</td>
+                <td>{product.description}</td>
+              </tr>
+              <tr>
+                <td>Technical Specifications:</td>
+                <td>
+                  <ul>
+                    <li>Material: {product.technicalSpecifications.material}</li>
+                    <li>Dimensions: {product.technicalSpecifications.dimensions.width} inches (Width) x {product.technicalSpecifications.dimensions.depth} inches (Depth) x {product.technicalSpecifications.dimensions.height} inches (Height)</li>
+                    <li>Color: {product.technicalSpecifications.color}</li>
+                    <li>Installation: {product.technicalSpecifications.installation}</li>
+                    <li>Faucet Hole: {product.technicalSpecifications.faucetHole}</li>
+                    <li>Drainage: {product.technicalSpecifications.drainage}</li>
+                  </ul>
+                </td>
               </tr>
             </tbody>
           </table>
