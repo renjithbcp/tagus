@@ -79,7 +79,7 @@ const ProductDetailsPage = () => {
               </tr>
               <tr>
                 <td>Price:</td>
-                <td>${product.price}</td>
+                <td><span className="highlight">${product.price}</span></td>
               </tr>
               <tr>
                 <td>Rating:</td>
@@ -105,6 +105,10 @@ const ProductDetailsPage = () => {
                     <li>Drainage: {product.technicalSpecifications.drainage}</li>
                   </ul>
                 </td>
+              </tr>
+              <tr>
+                <td>Availability:</td>
+                <td><span className="highlight">{product.availability}</span></td>
               </tr>
             </tbody>
           </table>
