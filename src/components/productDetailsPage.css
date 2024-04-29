@@ -12,6 +12,19 @@
     height: 100%;
   }
 
+  .product-details .product-info table {
+    width: 100%;
+  }
+  
+  .product-details .product-info table td {
+    padding: 5px;
+  }
+  
+  .product-details .product-info table td:first-child {
+    font-weight: bold;
+  }
+  
+
   .product-details .product-images .slick-slider {
     width: 100%;
     height: 100%; /* Ensure the slider takes up full height */

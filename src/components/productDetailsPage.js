@@ -47,10 +47,26 @@ const ProductDetailsPage = () => {
       </div>
       <div className="product-info">
         <h2>{product.name}</h2>
-        <p>Brand: {product.brand}</p>
-        <p>Price: ${product.price}</p>
-        <p>Rating: {product.rating}</p>
-        <p>Date: {product.date}</p>
+        <table>
+          <tbody>
+            <tr>
+              <td>Brand:</td>
+              <td>{product.brand}</td>
+            </tr>
+            <tr>
+              <td>Price:</td>
+              <td>${product.price}</td>
+            </tr>
+            <tr>
+              <td>Rating:</td>
+              <td>{product.rating}</td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td>{product.date}</td>
+            </tr>
+          </tbody>
+        </table>
         <div className="buttons">
           <button className="enquire-btn" onClick={openEnquireModal}>Enquire</button>
           <button className="locate-btn">Locate</button>
