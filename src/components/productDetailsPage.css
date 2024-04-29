@@ -14,15 +14,31 @@
 
   .product-details .product-info table {
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
   
   .product-details .product-info table td {
-    padding: 5px;
+    padding: 15px;
+    border: none;
   }
   
   .product-details .product-info table td:first-child {
     font-weight: bold;
+    background-color: #f0f0f0;
   }
+  
+  .product-details .product-info table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .product-details .product-info table tr:hover {
+    background-color: #f0f0f0;
+  }
+  
   
 
   .product-details .product-images .slick-slider {
@@ -39,6 +55,7 @@
   
   .product-details .product-info {
     flex: 1;
+    margin-top: 20px; /* Add space between image and info on smaller screens */
   }
   
   .product-details h2 {
@@ -50,29 +67,58 @@
     margin-bottom: 5px;
   }
   
-  .product-details .buttons {
-    margin-top: 20px;
-  }
-  
   .product-details .buttons button {
     margin-right: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
   }
   
   .product-details .enquire-btn {
     background-color: #007bff;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+  }
+  
+  .product-details .enquire-btn:hover {
+    background-color: #0056b3;
   }
   
   .product-details .locate-btn {
     background-color: #28a745;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
   }
   
+  .product-details .locate-btn:hover {
+    background-color: #218838;
+  }
+  
+
+
+  /* Responsive styles */
+@media only screen and (max-width: 768px) {
+  .product-details .product-images {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px; /* Add space between image and info on smaller screens */
+  }
+
+  .product-details .product-info {
+    flex: 1;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-details .product-images {
+    max-width: 100%;
+  }
+}
