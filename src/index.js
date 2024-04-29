@@ -1,10 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client'; // Import createRoot from react-dom/client
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// Use createRoot to initialize the root of the React tree
+const root = createRoot(document.getElementById('root'));
+
+// Render your application using the new API
 root.render(
   <React.StrictMode>
     <App />
