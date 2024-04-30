@@ -3,12 +3,9 @@
 .product-search-page {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     padding: 20px;
     align-items: stretch;
     flex-wrap: wrap;
-
-   
   }
   
   .top-section {

@@ -4,6 +4,7 @@ import ProductCard from './ProductCard.js';
 import './ProductSearchPage.css';
 import ProductDetailsPage from './productDetailsPage.js';
 import productsData from './Product.js';
+import ProductSearchBar from './ProductSearchBar.js';
 
 const ProductSearchPage = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -16,21 +17,54 @@ const ProductSearchPage = () => {
     material: '',
     availability: '',
   });
-
+  const [sortOption, setSortOption] = useState('newest'); // Default sort option
+  
   const handleProductClick = (product) => {
     setSelectedProduct(product);
+  };
+  const handleSearchInputChange = (query) => {
+    setSearchQuery(query);
   };
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
+  const handleSortChange = (query) => {
+    setSortOption(query);
+  };
   const handleFilterChange = (filterName, value) => {
     setFilterOptions({
       ...filterOptions,
       [filterName]: value,
     });
   };
+
+   // Function to sort products based on the selected sort option
+const sortProducts = (products, sortOption) => {
+  const sortedProducts = [...products];
+  
+  if (sortOption === 'newest') {
+    sortedProducts.sort((a, b) => {
+      return new Date(b.dateAdded) - new Date(a.dateAdded); // Assuming there's a property called 'dateAdded' in your product data
+    });
+  } else if (sortOption === 'rating') {
+    sortedProducts.sort((a, b) => {
+      return b.rating - a.rating; // Assuming there's a property called 'rating' in your product data
+    });
+  } else if (sortOption === 'priceHighToLow') {
+    sortedProducts.sort((a, b) => {
+      return b.price - a.price; // Assuming there's a property called 'price' in your product data
+    });
+  } else if (sortOption === 'priceLowToHigh') {
+    sortedProducts.sort((a, b) => {
+      return a.price - b.price; // Assuming there's a property called 'price' in your product data
+    });
+  } else if (sortOption === 'popularity') {
+    // Implement your popularity sorting logic here
+  }
+  
+  return sortedProducts;
+};
 
   const filteredProducts = productsData.filter((product) => {
     // Filter by search query
@@ -41,7 +75,7 @@ const ProductSearchPage = () => {
     const brandMatches = filterOptions.brand ? product.brand === filterOptions.brand : true;
   
     // Log product information to debug
-    console.log('Product:', product);
+    
   
     const sizeMatches = filterOptions.size ? (product.technicalSpecifications && product.technicalSpecifications.dimensions && product.technicalSpecifications.dimensions.width === parseInt(filterOptions.size)) : true;
 const colorMatches = filterOptions.color ? (product.technicalSpecifications && product.technicalSpecifications.color === filterOptions.color) : true;
@@ -51,7 +85,8 @@ const materialMatches = filterOptions.material ? (product.technicalSpecification
     return nameMatches && categoryMatches && brandMatches && sizeMatches && colorMatches && materialMatches && availabilityMatches;
   });
   
-  
+  // Sort filtered products based on sort option
+const sortedProducts = sortProducts(filteredProducts, sortOption);
 
   // Extract unique values for each filter option
   const categories = [...new Set(productsData.map(product => product.category))];
@@ -65,6 +100,7 @@ const materialMatches = filterOptions.material ? (product.technicalSpecification
     <div className="product-search-page">
       <div className="top-section">
         {/* Breadcrumbs, search bar, and sort dropdown */}
+        <ProductSearchBar onSearchInputChange={handleSearchInputChange} onSortChange={handleSortChange} />
       </div>
       <div className="main-content">
         <div className="filters">
@@ -113,7 +149,7 @@ const materialMatches = filterOptions.material ? (product.technicalSpecification
           </select>
         </div>
         <div className="product-list">
-          {filteredProducts.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
